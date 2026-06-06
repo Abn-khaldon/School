@@ -1,0 +1,2 @@
+User-agent: *
+Disallow: /School/admin932007101006.html
