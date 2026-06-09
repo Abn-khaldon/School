@@ -1,4 +1,4 @@
-﻿﻿﻿<!DOCTYPE html>
+﻿﻿﻿﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -432,14 +432,22 @@
   }
   
   async function updateStudent() {
-    let row = [
-      document.getElementById('eId').value,
-      document.getElementById('eName').value,
-      document.getElementById('eClass').value,
-      document.getElementById('eYear').value,
-      ...Array.from({length:9}, (_,i) => parseInt(document.getElementById('eg'+i).value)||0),
-      document.getElementById('eNote').value || 'لا يوجد'
-    ];
+    let id = document.getElementById('eId').value.trim();
+    let name = document.getElementById('eName').value.trim();
+    let cls = document.getElementById('eClass').value.trim();
+    let year = document.getElementById('eYear').value.trim();
+    if (!id || !name || !cls || !year) {
+      alert("يرجى تعبئة جميع البيانات الأساسية"); return;
+    }
+    let grades = [];
+    for (let i = 0; i < 9; i++) {
+      let val = parseInt(document.getElementById('eg'+i).value) || 0;
+      if (val < 0 || val > MAX_SCORES[i]) {
+        alert("الدرجة تتجاوز الحد الأقصى ("+MAX_SCORES[i]+") في "+SUBJECTS[i]); return;
+      }
+      grades.push(val);
+    }
+    let row = [id, name, cls, year, ...grades, document.getElementById('eNote').value || 'لا يوجد'];
     document.getElementById('editLoading').style.display = 'block';
     try {
       await fetch(API_URL, {
