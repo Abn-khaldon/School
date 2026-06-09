@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ظ†طھط§ط¦ط¬ ط§ظ„ط·ظ„ط§ط¨ - ظ…ط¯ط±ط³ط© ط§ط¨ظ† ط®ظ„ط¯ظˆظ†</title>
+<title>نتائج الطلاب - مدرسة ابن خلدون</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -228,14 +228,14 @@ tbody td:last-child{text-align:left;font-weight:700;color:var(--secondary)}
   <div class="bg-f bg-f3"></div>
   <div class="bg-f bg-f4"></div>
   <div class="bg-f bg-f5"></div>
-  <div class="bg-b">ط§ط¨ظ† ط®ظ„ط¯ظˆظ†</div>
+  <div class="bg-b">ابن خلدون</div>
 
 </div>
 
 <!-- Top Bar -->
 <div class="topbar">
   <div class="topbar-l">
-    <div class="sname">ط§ط¨ظ† ط®ظ„ط¯ظˆظ† <span>آ·</span> ط§ظ„طھط¹ظ„ظٹظ… ط§ظ„ط£ط³ط§ط³ظٹ</div>
+    <div class="sname">ابن خلدون <span>·</span> التعليم الأساسي</div>
   </div>
   <div class="topbar-r">
     <span class="d" id="liveDate"></span>
@@ -246,73 +246,73 @@ tbody td:last-child{text-align:left;font-weight:700;color:var(--secondary)}
 <!-- Hero -->
   <div class="hero">
   <div class="hero-logo"><img src="IMG_3252.PNG" alt=""></div>
-  <div class="hero-badge">ًںژ¯ ظ†ط¸ط§ظ… ط§ظ„ط§ط³طھط¹ظ„ط§ظ… ط§ظ„ط¥ظ„ظƒطھط±ظˆظ†ظٹ</div>
-  <h1>ظ†طھط§ط¦ط¬ <span>ط§ظ„ط·ظ„ط§ط¨</span><br>ظ…ط¯ط±ط³ط© ط§ط¨ظ† ط®ظ„ط¯ظˆظ†</h1>
-  <p>ط£ط¯ط®ظ„ ط§ظ„ط±ظ‚ظ… ط§ظ„ط¯ط±ط§ط³ظٹ ط§ظ„ظ…ظƒظˆظ† ظ…ظ† <strong>7 ط£ط±ظ‚ط§ظ…</strong> ظ„ظ„ط·ط§ظ„ط¨<br>ظ„ظ„ط§ط·ظ„ط§ط¹ ط¹ظ„ظ‰ ط§ظ„ظ†طھظٹط¬ط© ظˆط§ظ„ط¯ط±ط¬ط§طھ ط§ظ„طھظپطµظٹظ„ظٹط©</p>
+  <div class="hero-badge">🎯 نظام الاستعلام الإلكتروني</div>
+  <h1>نتائج <span>الطلاب</span><br>مدرسة ابن خلدون</h1>
+  <p>أدخل الرقم الدراسي المكون من <strong>7 أرقام</strong> للطالب<br>للاطلاع على النتيجة والدرجات التفصيلية</p>
 </div>
 
 <!-- Search -->
 <div class="search-wrap">
   <div class="search-box">
-    <input type="text" id="studentId" placeholder="ظ…ط«ط§ظ„: 2025001" maxlength="10" />
-    <button onclick="search()">â†گ ط¨ط­ط«</button>
+    <input type="text" id="studentId" placeholder="مثال: 2025001" maxlength="10" />
+    <button onclick="search()">← بحث</button>
   </div>
 
 </div>
 
 <!-- Stats -->
 <div class="stats">
-  <div class="stat"><div class="n" id="stat1">0</div><div class="l">ط·ط§ظ„ط¨ ظ…ط³ط¬ظ„</div></div>
-  <div class="stat"><div class="n">9</div><div class="l">طµظپظˆظپ ط¯ط±ط§ط³ظٹط©</div></div>
-  <div class="stat"><div class="n">24/7</div><div class="l">ط®ط¯ظ…ط© ظ…ط³طھظ…ط±ط©</div></div>
+  <div class="stat"><div class="n" id="stat1">0</div><div class="l">طالب مسجل</div></div>
+  <div class="stat"><div class="n">9</div><div class="l">صفوف دراسية</div></div>
+  <div class="stat"><div class="n">24/7</div><div class="l">خدمة مستمرة</div></div>
 </div>
 
-<div class="error" id="errorMsg">âڑ ï¸ڈ ظ„ظ… ظٹطھظ… ط§ظ„ط¹ط«ظˆط± ط¹ظ„ظ‰ ط·ط§ظ„ط¨ ط¨ظ‡ط°ط§ ط§ظ„ط±ظ‚ظ…</div>
+<div class="error" id="errorMsg">⚠️ لم يتم العثور على طالب بهذا الرقم</div>
 
 <div class="loading" id="loading">
   <div class="s"></div>
-  <p>ط¬ط§ط±ظٹ ط§ظ„ط¨ط­ط« ط¹ظ† ط¨ظٹط§ظ†ط§طھ ط§ظ„ط·ط§ظ„ط¨...</p>
+  <p>جاري البحث عن بيانات الطالب...</p>
 </div>
 
 <!-- Result -->
 <div class="result" id="resultCard">
   <div class="result-inner">
     <div class="r-header">
-      <div class="r-avatar">ًں‘¤</div>
+      <div class="r-avatar">👤</div>
       <div class="r-info">
         <h3 id="resName"></h3>
         <span class="rid" id="resId"></span>
-        <span class="rbadge">âœ… طھظ… ط§ظ„طھط­ظ‚ظ‚</span>
+        <span class="rbadge">✅ تم التحقق</span>
       </div>
     </div>
     <div class="r-grid">
-      <div class="r-item"><span class="l">ط§ظ„طµظپ ط§ظ„ط¯ط±ط§ط³ظٹ</span><span class="v" id="resClass"></span></div>
-      <div class="r-item"><span class="l">ط§ظ„ط¹ط§ظ… ط§ظ„ط¯ط±ط§ط³ظٹ</span><span class="v" id="resYear"></span></div>
+      <div class="r-item"><span class="l">الصف الدراسي</span><span class="v" id="resClass"></span></div>
+      <div class="r-item"><span class="l">العام الدراسي</span><span class="v" id="resYear"></span></div>
     </div>
     <div class="r-grades">
-      <div class="gt">ط§ظ„ط¯ط±ط¬ط§طھ ط§ظ„طھظپطµظٹظ„ظٹط©</div>
+      <div class="gt">الدرجات التفصيلية</div>
       <table>
-        <thead><tr><th>ط§ظ„ظ…ط§ط¯ط©</th><th style="text-align:center">ط§ظ„ط¯ط±ط¬ط©</th><th style="text-align:center">ط§ظ„ط¹ط¸ظ…ظ‰</th><th style="text-align:left">ط§ظ„ظ†ط³ط¨ط©</th></tr></thead>
+        <thead><tr><th>المادة</th><th style="text-align:center">الدرجة</th><th style="text-align:center">العظمى</th><th style="text-align:left">النسبة</th></tr></thead>
         <tbody id="gradesBody"></tbody>
       </table>
     </div>
     <div class="r-summary">
-      <div class="s-row"><span class="sl">ًں“ٹ ط§ظ„ظ…ط¬ظ…ظˆط¹ ط§ظ„ظƒظ„ظٹ</span><span class="sv" id="resTotal"></span></div>
-      <div class="s-row"><span class="sl">ًں“ˆ ط§ظ„ظ†ط³ط¨ط© ط§ظ„ظ…ط¦ظˆظٹط©</span><span class="pct" id="resPercent"></span></div>
-      <div class="s-row"><span class="sl">ًںڈ† ط§ظ„طھظ‚ط¯ظٹط± ط§ظ„ط¹ط§ظ…</span><span class="sv" id="resBadge"></span></div>
+      <div class="s-row"><span class="sl">📊 المجموع الكلي</span><span class="sv" id="resTotal"></span></div>
+      <div class="s-row"><span class="sl">📈 النسبة المئوية</span><span class="pct" id="resPercent"></span></div>
+      <div class="s-row"><span class="sl">🏆 التقدير العام</span><span class="sv" id="resBadge"></span></div>
       <div class="r-note" id="resNote"></div>
     </div>
     <div class="r-actions">
-      <button class="btn-back" onclick="goBack()">â†گ ط¨ط­ط« ط¹ظ† ط·ط§ظ„ط¨ ط¢ط®ط±</button>
-      <button class="btn-print" onclick="window.print()">ًں–¨ï¸ڈ ط·ط¨ط§ط¹ط© ط§ظ„ظ†طھظٹط¬ط©</button>
+      <button class="btn-back" onclick="goBack()">← بحث عن طالب آخر</button>
+      <button class="btn-print" onclick="window.print()">🖨️ طباعة النتيجة</button>
     </div>
-    <div class="pf">ظ…ط¯ط±ط³ط© ط§ط¨ظ† ط®ظ„ط¯ظˆظ† ظ„ظ„طھط¹ظ„ظٹظ… ط§ظ„ط£ط³ط§ط³ظٹ â€” ط§ظ„ط¨ظٹط¶ط§ط،طŒ ظ„ظٹط¨ظٹط§</div>
+    <div class="pf">مدرسة ابن خلدون للتعليم الأساسي — البيضاء، ليبيا</div>
   </div>
 </div>
 
 <div class="footer">
-  ط§ظ„ظ†ط³ط®ط© ط§ظ„طھط¬ط±ظٹط¨ظٹط© 3.0 &nbsp;â€¢&nbsp; ظ…ط¯ط±ط³ط© ط§ط¨ظ† ط®ظ„ط¯ظˆظ† ظ„ظ„طھط¹ظ„ظٹظ… ط§ظ„ط£ط³ط§ط³ظٹ &nbsp;â€¢&nbsp;
-  <span class="h">â‌¤</span> طµظ†ط¹ ظپظٹ ظ„ظٹط¨ظٹط§
+  النسخة التجريبية 3.0 &nbsp;•&nbsp; مدرسة ابن خلدون للتعليم الأساسي &nbsp;•&nbsp;
+  <span class="h">❤</span> صنع في ليبيا
 </div>
 
 <script>
@@ -320,8 +320,8 @@ const API_URL = "https://script.google.com/macros/s/AKfycbyXsddOE5rlCtrV8Eir_J9a
 const TOTAL_MAX = 824;
 
 function updDate(){
-  const n=new Date(),m=["ظٹظ†ط§ظٹط±","ظپط¨ط±ط§ظٹط±","ظ…ط§ط±ط³","ط£ط¨ط±ظٹظ„","ظ…ط§ظٹظˆ","ظٹظˆظ†ظٹظˆ","ظٹظˆظ„ظٹظˆ","ط£ط؛ط³ط·ط³","ط³ط¨طھظ…ط¨ط±","ط£ظƒطھظˆط¨ط±","ظ†ظˆظپظ…ط¨ط±","ط¯ظٹط³ظ…ط¨ط±"],d=["ط§ظ„ط£ط­ط¯","ط§ظ„ط¥ط«ظ†ظٹظ†","ط§ظ„ط«ظ„ط§ط«ط§ط،","ط§ظ„ط£ط±ط¨ط¹ط§ط،","ط§ظ„ط®ظ…ظٹط³","ط§ظ„ط¬ظ…ط¹ط©","ط§ظ„ط³ط¨طھ"];
-  document.getElementById('liveDate').textContent=`${d[n.getDay()]}طŒ ${n.getDate()} ${m[n.getMonth()]} ${n.getFullYear()}ظ…`
+  const n=new Date(),m=["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"],d=["الأحد","الإثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"];
+  document.getElementById('liveDate').textContent=`${d[n.getDay()]}، ${n.getDate()} ${m[n.getMonth()]} ${n.getFullYear()}م`
 }
 updDate();setInterval(updDate,60000);
 
@@ -330,29 +330,29 @@ function cnt(el,t){let s=0,st=Math.ceil(t/120);const i=setInterval(()=>{s+=st;if
 setTimeout(()=>cnt(document.getElementById('stat1'),3724),400);
 
 function getGrade(p){
-  if(p>=85)return{label:"ظ…ظ…طھط§ط²",cls:"bdg-e"};
-  if(p>=75)return{label:"ط¬ظٹط¯ ط¬ط¯ط§ظ‹",cls:"bdg-vg"};
-  if(p>=65)return{label:"ط¬ظٹط¯",cls:"bdg-g"};
-  if(p>=50)return{label:"ظ…ظ‚ط¨ظˆظ„",cls:"bdg-p"};
-  return{label:"ط³ط§ظ‚ط·",cls:"bdg-f"};
+  if(p>=85)return{label:"ممتاز",cls:"bdg-e"};
+  if(p>=75)return{label:"جيد جداً",cls:"bdg-vg"};
+  if(p>=65)return{label:"جيد",cls:"bdg-g"};
+  if(p>=50)return{label:"مقبول",cls:"bdg-p"};
+  return{label:"ساقط",cls:"bdg-f"};
 }
 
 async function search(){
   const id=document.getElementById('studentId').value.trim(),em=document.getElementById('errorMsg'),rc=document.getElementById('resultCard'),ld=document.getElementById('loading');
   em.style.display='none';rc.style.display='none';
-  if(!id){em.textContent='âڑ ï¸ڈ ظٹط±ط¬ظ‰ ط¥ط¯ط®ط§ظ„ ط§ظ„ط±ظ‚ظ… ط§ظ„ط¯ط±ط§ط³ظٹ';em.style.display='block';return}
+  if(!id){em.textContent='⚠️ يرجى إدخال الرقم الدراسي';em.style.display='block';return}
   ld.style.display='block';
   try{
     const r=await fetch(API_URL+'?id='+id),s=await r.json();
     ld.style.display='none';
-    if(s.error){em.textContent='âڑ ï¸ڈ ظ„ظ… ظٹطھظ… ط§ظ„ط¹ط«ظˆط± ط¹ظ„ظ‰ ط·ط§ظ„ط¨ ط¨ظ‡ط°ط§ ط§ظ„ط±ظ‚ظ…';em.style.display='block';return}
+    if(s.error){em.textContent='⚠️ لم يتم العثور على طالب بهذا الرقم';em.style.display='block';return}
     show(s);
-  }catch(e){ld.style.display='none';em.textContent='âڑ ï¸ڈ ط­ط¯ط« ط®ط·ط£ ظپظٹ ط§ظ„ط§طھطµط§ظ„طŒ ظٹط±ط¬ظ‰ ط§ظ„ظ…ط­ط§ظˆظ„ط© ظ„ط§ط­ظ‚ط§ظ‹';em.style.display='block';console.error(e)}
+  }catch(e){ld.style.display='none';em.textContent='⚠️ حدث خطأ في الاتصال، يرجى المحاولة لاحقاً';em.style.display='block';console.error(e)}
 }
 
 function show(s){
   document.getElementById('resName').textContent=s.name;
-  document.getElementById('resId').textContent='ط§ظ„ط±ظ‚ظ… ط§ظ„ط¯ط±ط§ط³ظٹ: '+s.id;
+  document.getElementById('resId').textContent='الرقم الدراسي: '+s.id;
   document.getElementById('resClass').textContent=s.class;
   document.getElementById('resYear').textContent=s.year;
   const tb=document.getElementById('gradesBody');tb.innerHTML='';let total=0;
@@ -368,7 +368,7 @@ function show(s){
   document.getElementById('resTotal').textContent=total+' / '+TOTAL_MAX;
   document.getElementById('resPercent').innerHTML=pct.toFixed(2)+'<span> %</span>';
   document.getElementById('resBadge').innerHTML='<span class="bdg '+gd.cls+'">'+gd.label+'</span>';
-  document.getElementById('resNote').textContent=s.note!=='ظ„ط§ ظٹظˆط¬ط¯'?'ًں“‌ ظ…ظ„ط§ط­ط¸ط©: '+s.note:'';
+  document.getElementById('resNote').textContent=s.note!=='لا يوجد'?'📝 ملاحظة: '+s.note:'';
   document.getElementById('resultCard').style.display='block';
   document.getElementById('resultCard').scrollIntoView({behavior:'smooth',block:'start'});
 }
