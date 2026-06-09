@@ -55,7 +55,9 @@ body{font-family:Tajawal,sans-serif;background:var(--bg);color:var(--text);min-h
 /* HERO */
 .hero{position:relative;z-index:1;padding:48px 20px 40px;text-align:center;max-width:700px;margin:0 auto}
 .hero-logo{margin-bottom:24px;display:flex;justify-content:center}
-.hero-logo img{width:80px;height:80px;object-fit:contain;opacity:0.85;animation:fHero 6s ease-in-out infinite}
+.hero-logo .lc{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,#2d1b69,#0d9488);display:flex;align-items:center;justify-content:center;padding:10px;box-shadow:0 4px 24px rgba(45,27,105,0.3),inset 0 0 30px rgba(13,148,136,0.15);position:relative;animation:fHero 6s ease-in-out infinite}
+.hero-logo .lc::after{content:'';position:absolute;inset:2px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.06);pointer-events:none}
+.hero-logo img{width:100%;height:100%;object-fit:contain;opacity:0.95;filter:brightness(1.1)}
 @keyframes fHero{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .hero-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:50px;font-size:12px;font-weight:600;background:rgba(91,33,182,0.08);color:var(--primary-light);margin-bottom:20px;border:1px solid rgba(91,33,182,0.1)}
 .hero h1{font-size:clamp(28px,5vw,42px);font-weight:900;color:var(--primary);line-height:1.3;margin-bottom:10px}
@@ -245,7 +247,7 @@ tbody td:last-child{text-align:left;font-weight:700;color:var(--secondary)}
 
 <!-- Hero -->
   <div class="hero">
-  <div class="hero-logo"><img src="IMG_3252.PNG" alt=""></div>
+  <div class="hero-logo"><div class="lc"><img src="IMG_3252.PNG" alt=""></div></div>
   <div class="hero-badge">🎯 نظام الاستعلام الإلكتروني</div>
   <h1>نتائج <span>الطلاب</span><br>مدرسة ابن خلدون</h1>
   <p>أدخل الرقم الدراسي المكون من <strong>7 أرقام</strong> للطالب<br>للاطلاع على النتيجة والدرجات التفصيلية</p>
