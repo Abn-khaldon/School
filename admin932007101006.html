@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -262,7 +262,7 @@
 </div>
 
 <script>
-  PASSWORD = "AbnKhaldon1973";
+  const PASSWORD = "AbnKhaldon1973";
   const API_URL = "https://script.google.com/macros/s/AKfycbyXsddOE5rlCtrV8Eir_J9aJ2cu8YV1_DqC574rUD_HI9k8rpX-X5u-WtA5NME4cNGh/exec";
   const TOTAL_MAX = 824;
   const SUBJECTS = ["اللغة العربية","اللغة الإنجليزية","الرياضيات","العلوم","الجغرافيا","التاريخ","الحاسوب","الكتابة","التربية الإسلامية"];
@@ -275,7 +275,7 @@
     if (document.getElementById('passInput').value === PASSWORD) {
       document.getElementById('loginWrap').style.display = 'none';
       document.getElementById('dashboard').style.display = 'block';
-      loadStudents(); // جلب الطلاب فوراً ليعمل فحص التكرار
+      loadStudents();
     } else {
       document.getElementById('loginError').style.display = 'block';
     }
@@ -298,7 +298,7 @@
   
   function getGrade(pct) {
     if (pct>=85) return {label:"ممتاز",cls:"badge-excellent"};
-    if (pct>=75) return {label:"جيد جداً",cls:"badge-very-good"};
+    if (pct>=75) return {label:"جيد جدا",cls:"badge-very-good"};
     if (pct>=65) return {label:"جيد",cls:"badge-good"};
     if (pct>=50) return {label:"مقبول",cls:"badge-pass"};
     return {label:"ساقط",cls:"badge-fail"};
@@ -309,46 +309,33 @@
     const name = document.getElementById('fName').value.trim();
     const studentClass = document.getElementById('fClass').value.trim();
     const year = document.getElementById('fYear').value.trim();
-  
-    // 1. إجبار المدخل على عدم ترك الحقول الأساسية فارغة
     if (!id || !name || !studentClass || !year) { 
-      alert("يرجى تعبئة جميع البيانات الأساسية (الرقم، الاسم، الصف، العام).");
-      return; 
+      alert("يرجى تعبئة جميع البيانات الأساسية"); return; 
     }
-  
-    // 2. إجبار المدخل على عدم تكرار الرقم الدراسي
     if (allStudents.some(s => String(s[0]) === id)) {
-      alert("الرقم الدراسي موجود مسبقاً! يرجى إدخال رقم غير مكرر.");
-      return;
+      alert("الرقم الدراسي موجود مسبقاً"); return;
     }
-  
     let grades = [];
-    // 3. إجبار المدخل على تعبئة الدرجات وعدم تجاوز الحد الأقصى
     for (let i = 0; i < 9; i++) {
       let gVal = document.getElementById('g'+i).value.trim();
       if (gVal === "") {
-        alert(`يرجى إدخال درجة ${SUBJECTS[i]}. لا يمكن ترك الحقل فارغاً.`);
-        return;
+        alert("يرجى إدخال درجة "+SUBJECTS[i]); return;
       }
       let parsedGrade = parseInt(gVal) || 0;
       if (parsedGrade < 0 || parsedGrade > MAX_SCORES[i]) {
-        alert(`خطأ: الدرجة المدخلة في ${SUBJECTS[i]} تتجاوز الحد الأقصى (${MAX_SCORES[i]}).`);
-        return;
+        alert("الدرجة تتجاوز الحد الأقصى ("+MAX_SCORES[i]+") في "+SUBJECTS[i]); return;
       }
       grades.push(parsedGrade);
     }
-  
     const row = [
       id, name, studentClass, year,
       ...grades,
       document.getElementById('fNote').value || 'لا يوجد'
     ];
-  
     showMsg('saveLoading');
     try {
       let resp = await fetch(API_URL, {
-        method: 'POST',
-        redirect: 'follow',
+        method: 'POST', redirect: 'follow',
         headers: {'Content-Type': 'text/plain'},
         body: JSON.stringify({action:'add', data:row, secret:'IBK_SECRET_2025_X9'})
       });
@@ -370,7 +357,8 @@
   }
   
   async function loadStudents() {
-    showMsg('listLoading');
+    document.getElementById('listLoading').style.display = 'block';
+    document.getElementById('listLoading').textContent = 'جاري تحميل البيانات...';
     try {
       let r = await fetch(API_URL + '?action=list');
       let data = await r.json();
@@ -380,7 +368,7 @@
       renderStudents(students);
       updateStats(students);
     } catch(e) {
-      document.getElementById('listLoading').textContent = '⚠️ فشل تحميل البيانات';
+      document.getElementById('listLoading').textContent = 'فشل تحميل البيانات';
     }
   }
   
@@ -398,16 +386,7 @@
       let pct = (total/TOTAL_MAX)*100;
       let g = getGrade(pct);
       let tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${id}</td>
-        <td>${name}</td>
-        <td>${cls}</td>
-        <td>${pct.toFixed(1)}%</td>
-        <td><span class="badge ${g.cls}">${g.label}</span></td>
-        <td class="actions">
-          <button class="btn btn-sm btn-success" onclick="editStudent('${id}')">✏️</button>
-          <button class="btn btn-sm btn-danger" onclick="deleteStudent('${id}')">🗑️</button>
-        </td>`;
+      tr.innerHTML = '<td>'+id+'</td><td>'+name+'</td><td>'+cls+'</td><td>'+pct.toFixed(1)+'%</td><td><span class="badge '+g.cls+'">'+g.label+'</span></td><td class="actions"><button class="btn btn-sm btn-success" onclick="editStudent(\''+id+'\')">تعديل</button> <button class="btn btn-sm btn-danger" onclick="deleteStudent(\''+id+'\')">حذف</button></td>';
       tbody.appendChild(tr);
     });
   }
@@ -464,8 +443,7 @@
     document.getElementById('editLoading').style.display = 'block';
     try {
       await fetch(API_URL, {
-        method: 'POST',
-        redirect: 'follow',
+        method: 'POST', redirect: 'follow',
         headers: {'Content-Type': 'text/plain'},
         body: JSON.stringify({action:'update', data:row, secret:'IBK_SECRET_2025_X9'})
       });
@@ -473,7 +451,7 @@
       closeModal();
       loadStudents();
     } catch(e) {
-      document.getElementById('editLoading').textContent = '⚠️ فشل التحديث';
+      document.getElementById('editLoading').textContent = 'فشل التحديث';
     }
   }
   
@@ -481,8 +459,7 @@
     if (!confirm('هل أنت متأكد من حذف الطالب رقم '+id+'؟')) return;
     try {
       await fetch(API_URL, {
-        method: 'POST',
-        redirect: 'follow',
+        method: 'POST', redirect: 'follow',
         headers: {'Content-Type': 'text/plain'},
         body: JSON.stringify({action:'delete', id:id, secret:'IBK_SECRET_2025_X9'})
       });
